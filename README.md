@@ -68,10 +68,12 @@ Ai_Project_2026/
 ```bash
 ✅ Java 25 LTS
 ✅ Maven 3.9+
-✅ PostgreSQL 15+
+✅ Docker & Docker Compose (PostgreSQL এর জন্য - সহজ!)
 ✅ Git 2.50+
-✅ Ollama (AI এর জন্য)
+✅ Ollama (AI এর জন্য - অপশনাল)
 ```
+
+> **💡 টিপ:** PostgreSQL সরাসরি ইনস্টল করার পরিবর্তে Docker ব্যবহার করুন - অনেক সহজ!
 
 ### ইনস্টলেশন স্টেপ
 
@@ -81,13 +83,28 @@ git clone https://github.com/Rohan24216063/Ai_Project_2026.git
 cd Ai_Project_2026
 ```
 
-#### 2️⃣ ডাটাবেস সেটআপ করুন
+#### 2️⃣ ডাটাবেস সেটআপ করুন (Docker দিয়ে - সুপারিশকৃত)
+```bash
+# Docker দিয়ে চালু করুন (এক কমান্ড!)
+docker-compose up -d
+
+# স্ট্যাটাস চেক করুন
+docker-compose ps
+
+# বিস্তারিত গাইড দেখুন:
+# docs/DOCKER_SETUP.md
+```
+
+**অথবা** সরাসরি PostgreSQL ইনস্টল করুন:
 ```bash
 # PostgreSQL-এ নতুন ডাটাবেস তৈরি করুন
 createdb university_db
 
 # Schema লোড করুন
 psql university_db < database/schema.sql
+
+# application.properties আপডেট করুন:
+# spring.datasource.url=jdbc:postgresql://localhost:5432/university_db
 ```
 
 #### 3️⃣ Backend সেটআপ করুন
